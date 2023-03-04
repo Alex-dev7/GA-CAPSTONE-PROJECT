@@ -92,3 +92,8 @@ erDiagram
 ### Mobile Wireframes
 ![](https://i.imgur.com/K9Bj1zB.png)
 ![](https://i.imgur.com/JeHxigY.png)
+
+* [Deployed Website](https://sytycc-blog.vercel.app/) 
+
+#### Note: 
+ More features will be added as this project progresses
