@@ -1,8 +1,8 @@
 # S.Y.T.Y.C.C.Blog
 
 - **Description:** 
-"So You Think You Can Code?"
-This is a blogging app built with Next.js, Prisma, and PostgreSQL. The app allows users to create an account and publish blog posts. Users can view a list of all published posts, view individual posts, search for posts based on their title or tag, delete, and upgrade a post(only if the post was created by this user).  This application is written in TypeScript, ensuring strong type safety throughout the codebase. Overall, the app is designed to provide a modern and user-friendly interface for creating and sharing content online.
+"So You Think You Can Code?" - a blog that chalanges you to be a better programmer, stay humble, and to keep on learning. 
+This blogging app is built with Next.js, Prisma, and PostgreSQL. The app allows users to create an account and publish blog posts. Users can view a list of all published posts, view individual posts, search for posts based on their title or tag, delete, and upgrade posts that he created.  This application is written in TypeScript, ensuring strong type safety throughout the codebase. Overall, the app is designed to provide a modern and user-friendly interface for creating and sharing content online.
 
 
 ## Technologies Used
@@ -57,6 +57,8 @@ flowchart TD;
 ### API Route Table
 | Route |	Method |	Description | 
 |-------------|---------|-------------|
+| /api/auth/signup | POST | SignUp to create an account |
+| /api/auth/signin | GET | SignIn as an existing user|
 |/api/posts |	GET |	Retrieve a list of all published posts |
 |/api/posts|	POST|	Create a new post|
 |/api/posts/:id|	GET	|Retrieve a specific post based on its ID|
