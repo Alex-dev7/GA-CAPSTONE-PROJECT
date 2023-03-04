@@ -1,27 +1,93 @@
-# Next.js + Tailwind CSS Example
+# S.Y.T.Y.C.C.Blog
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.2)](https://tailwindcss.com/blog/tailwindcss-v3-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+- **Description:** 
+This is a blogging app built with Next.js, Prisma, and PostgreSQL. The app allows users to create an account and publish blog posts. Users can view a list of all published posts, view individual posts, search for posts based on their title or tag, delete, and upgrade a post(only if the post was created by this user).  This application is written in TypeScript, ensuring strong type safety throughout the codebase. Overall, the app is designed to provide a modern and user-friendly interface for creating and sharing content online.
 
-## Deploy your own
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+## Technologies Used
+  * Next.js
+  * Next.js API routes
+  * Prisma
+  * PostgreSQL 
+  * NextAuth.js 
+  * TypeScript
+  * Tailwind CSS
+  * Figma
+  * bit.io
+  * Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
 
-## How to use
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
+## Component Architecture
+
+```mermaid
+flowchart TD;
+    subgraph "pages" 
+    HomePage --> AuthProvider
+    AuthProvider --> Layout
+    Layout --> Header
+    Layout --> Main
+    Layout --> Footer
+    LoginPage --> AuthProvider
+    SignupPage --> AuthProvider
+    PostPage --> AuthProvider
+    end
+    
+    subgraph "components" 
+    Header --> Logo
+    Header --> Navigation
+    Header --> Search
+    Navigation --> NavLink
+    
+    Search --> SearchInput
+    Search --> SearchButton
+    Main --> PostList
+    PostList --> Post
+    Post --> PostImage
+    Post --> PostTitle
+    Post --> PostAuthor
+    Post --> PostContent
+    Post --> PostTags
+    Footer --> SocialLinks
+    end
+```    
+
+### API Route Table
+| Route |	Method |	Description | 
+|-------------|---------|-------------|
+|/api/posts |	GET |	Retrieve a list of all published posts |
+|/api/posts|	POST|	Create a new post|
+|/api/posts/:id|	GET	|Retrieve a specific post based on its ID|
+|/api/posts/:id|	PUT |	Update an existing post based on its ID|
+|/api/posts/:id|	DELETE|	Delete an existing post based on its ID|
+
+### ERD Model
+``` mermaid
+erDiagram
+    User {
+        string id
+        string name
+        string email
+        datetime createdAt
+        datetime updatedAt
+    }
+    Post {
+        string id
+        string title
+        string image
+        string[] tag
+        string content
+        bool published
+    }
+    User ||--o{ Post : author
 ```
 
-```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
+### Desktop Wireframes
+![](https://i.imgur.com/6IpiCTu.png)
+![](https://i.imgur.com/qfQO34p.png)
+![](https://i.imgur.com/pgwXZlA.png)
 
-```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+### Mobile Wireframes
+![](https://i.imgur.com/K9Bj1zB.png)
+![](https://i.imgur.com/JeHxigY.png)
