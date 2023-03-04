@@ -1,6 +1,7 @@
 # S.Y.T.Y.C.C.Blog
 
 - **Description:** 
+"So You Think You Can Code?"
 This is a blogging app built with Next.js, Prisma, and PostgreSQL. The app allows users to create an account and publish blog posts. Users can view a list of all published posts, view individual posts, search for posts based on their title or tag, delete, and upgrade a post(only if the post was created by this user).  This application is written in TypeScript, ensuring strong type safety throughout the codebase. Overall, the app is designed to provide a modern and user-friendly interface for creating and sharing content online.
 
 
