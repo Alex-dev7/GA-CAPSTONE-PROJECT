@@ -27,8 +27,9 @@ export default async function Home() {
      
       {/* @ts-expect-error Async Server Component */}
        {posts?.map((post )=> (
-        <div  key={post.id}>
-        <Link  href={{pathname: `/post/${post.id}`}} className="text-lg py-6">
+        <div  key={post.id} className="m-4 border-2 flex p-5 hover:text-white hover:bg-slate-600  transition-all">
+            <img src={post.image} className="w-64" />
+        <Link  href={{pathname: `/post/${post.id}`}} className="text-lg p-6">
           {post.title}
         </Link>
         <br/>

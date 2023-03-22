@@ -1,5 +1,8 @@
 import './globals.css'
+import Header from './header'
 // import FormPost from './components/Form'
+import Provider from './provider'
+
 
 export const metadata = {
   title: 'my app',
@@ -12,10 +15,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className='scroll-smooth antialiased'>
       <body >
-        {/* <FormPost /> */}
-        {children}
+        <Provider>
+            <Header />
+            {/* <FormPost /> */}
+            {children}            
+        </Provider>
+
       </body>
     </html>
   )
