@@ -1,22 +1,24 @@
 // Header.tsx
-'use client'
-import React from 'react';
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { signOut, useSession } from 'next-auth/react';
+"use client";
+import React from "react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
+
 
 const Header: React.FC = () => {
   const router = useRouter();
-  const currentPathname = usePathname()
+  const currentPathname = usePathname();
   const isActive: (pathname: string) => boolean = (pathname) =>
     currentPathname === pathname;
 
   const { data: session, status } = useSession();
+  const image = session?.user?.image;
 
   let left = (
     <div className="left">
       <Link legacyBehavior href="/">
-        <a className="bold" data-active={isActive('/')}>
+        <a className="bold" data-active={isActive("/")}>
           Feed
         </a>
       </Link>
@@ -31,7 +33,7 @@ const Header: React.FC = () => {
           display: inline-block;
         }
 
-        .left a[data-active='true'] {
+        .left a[data-active="true"] {
           color: gray;
         }
 
@@ -44,11 +46,11 @@ const Header: React.FC = () => {
 
   let right = null;
 
-  if (status === 'loading') {
+  if (status === "loading") {
     left = (
       <div className="left">
         <Link legacyBehavior href="/">
-          <a className="bold" data-active={isActive('/')}>
+          <a className="bold" data-active={isActive("/")}>
             Feed
           </a>
         </Link>
@@ -63,7 +65,7 @@ const Header: React.FC = () => {
             display: inline-block;
           }
 
-          .left a[data-active='true'] {
+          .left a[data-active="true"] {
             color: gray;
           }
 
@@ -89,7 +91,7 @@ const Header: React.FC = () => {
     right = (
       <div className="right">
         <Link legacyBehavior href="/api/auth/signin">
-          <a data-active={isActive('/signup')}>Log in</a>
+          <a data-active={isActive("/signup")}>Log in</a>
         </Link>
         <style jsx>{`
           a {
@@ -120,12 +122,13 @@ const Header: React.FC = () => {
     left = (
       <div className="left">
         <Link legacyBehavior href="/">
-          <a className="bold" data-active={isActive('/')}>
+          <a className="bold" data-active={isActive("/")}>
             Feed
           </a>
         </Link>
-        <Link href="/drafts">
-          <a data-active={isActive('/drafts')}>My drafts</a>
+        {/* href="/drafts" */}
+        <Link legacyBehavior href="#">
+          <a data-active={isActive("/drafts")}>My drafts</a>
         </Link>
         <style jsx>{`
           .bold {
@@ -138,7 +141,7 @@ const Header: React.FC = () => {
             display: inline-block;
           }
 
-          .left a[data-active='true'] {
+          .left a[data-active="true"] {
             color: gray;
           }
 
@@ -150,9 +153,9 @@ const Header: React.FC = () => {
     );
     right = (
       <div className="right">
-        <p>
-          {session.user?.name} ({session.user?.email})
-        </p>
+        <img src={image as string} className="w-12  rounded-full" />
+        <p>{session.user?.name}</p>
+
         <Link legacyBehavior href="/create">
           <button>
             <a>New post</a>
@@ -180,6 +183,9 @@ const Header: React.FC = () => {
 
           .right {
             margin-left: auto;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
           }
 
           .right a {
@@ -211,4 +217,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header
+export default Header;

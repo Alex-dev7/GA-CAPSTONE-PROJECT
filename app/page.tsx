@@ -1,5 +1,5 @@
 import Link from "next/link"
-
+import DeletePost from "./components/delete";
 
 async function getData() {
     const res = await fetch(`${process.env.BASE_URL}/api/post`, { cache: "no-cache" });
@@ -14,6 +14,7 @@ async function getData() {
 
 
 export default async function Home() {
+
 
  const posts = await getData()
  
@@ -33,7 +34,7 @@ export default async function Home() {
           {post.title}
         </Link>
         <br/>
-          {/* <Delete className='w-8 h-9' id={post?.id} />      */}
+          <DeletePost  id={post?.id} />     
         <br/>        
         </div>
 
