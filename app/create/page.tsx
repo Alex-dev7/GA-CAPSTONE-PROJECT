@@ -9,7 +9,7 @@ export default function CreatePost() {
   const [image, setImage] = useState("")
   const router = useRouter()
   // console.log(title)
-    const { data: session, status } = useSession();
+    const { data: session } = useSession();
     const email = session?.user?.email
     // console.log(email)
 
@@ -23,7 +23,7 @@ export default function CreatePost() {
     const contentInput = form.elements.namedItem("content") as HTMLInputElement
     const imageInput = form.elements.namedItem("image") as HTMLInputElement
     
-    const res = await fetch(`/api/post`, {
+    const res = await fetch(`/api/post`, { 
       method: "POST",
       body: JSON.stringify({title: titleInput?.value, content: contentInput?.value, image: imageInput?.value, email: email})
     });
@@ -31,7 +31,7 @@ export default function CreatePost() {
     // console.log({response}, "ok")
 
     // this will refresh the page
-    router.refresh()
+    router.push('/drafts')
     if (!response.ok) console.log({response: response.message});
   }
 

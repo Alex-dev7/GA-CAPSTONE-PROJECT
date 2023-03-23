@@ -1,6 +1,6 @@
 // Header.tsx
 "use client";
-import React from "react";
+
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
@@ -126,9 +126,9 @@ const Header: React.FC = () => {
             Feed
           </a>
         </Link>
-        {/* href="/drafts" */}
-        <Link legacyBehavior href="#">
-          <a data-active={isActive("/drafts")}>My drafts</a>
+
+        <Link legacyBehavior href="/drafts">
+          <a data-active={isActive(`/drafts?${session?.user?.email}`)}>My drafts</a>
         </Link>
         <style jsx>{`
           .bold {
@@ -150,7 +150,8 @@ const Header: React.FC = () => {
           }
         `}</style>
       </div>
-    );
+    )
+
     right = (
       <div className="right">
         <img src={image as string} className="w-12  rounded-full" />
