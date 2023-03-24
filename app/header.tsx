@@ -1,9 +1,8 @@
-// Header.tsx
-"use client";
+"use client"
 
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { signOut, useSession } from "next-auth/react";
+import Link from "next/link"
+import { usePathname, useRouter } from "next/navigation"
+import { signOut, useSession } from "next-auth/react"
 
 
 const Header: React.FC = () => {

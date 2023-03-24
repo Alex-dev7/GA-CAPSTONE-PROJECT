@@ -13,7 +13,7 @@ export default function DeletePost({id}: any){
             method: "DELETE",
           })
 
-          router.refresh()    
+          router.push('/')   
     }
     
     return (

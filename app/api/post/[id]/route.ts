@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import prisma from "../../../../lib/prisma";
 import { redirect } from 'next/navigation';
+import { Router } from "next/router";
 
 // SHOW BY ID
 
@@ -9,7 +10,12 @@ export async function GET(request: Request, { params }: any) {
     const data = await prisma.post.findUnique({
         where: {
             id: params.id,
-        }
+        },
+        include: {
+          author: {
+            select: { name: true, email: true},
+          },
+        },
       });
     //   console.log(data);
       
@@ -42,12 +48,14 @@ export async function GET(request: Request, { params }: any) {
             id: params.id,
         },
         data: {
-            title: body.title,
-            content: body.content,
-            // published: body.published,
+            title: body.title || undefined, 
+            content: body.content || undefined,
+            image: body.image || undefined,
+            published: body.published || undefined,  // if body.vlue is falsy then return undefined, otherwise return it's value
         }
       });
-    //   console.log(data, "here");
+      
+      
 
     return  NextResponse.json(data)
   } 

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import DeletePost from "./components/delete";
+
 
 async function getData() {
     const res = await fetch(`${process.env.BASE_URL}/api/post`, { cache: "no-cache" });
@@ -32,10 +32,7 @@ export default async function Home() {
             <img src={post.image} className="w-64" />
         <Link  href={{pathname: `/post/${post.id}`}} className="text-lg p-6">
           {post.title}
-        </Link>
-        <br/>
-          <DeletePost  id={post?.id} />     
-        <br/>        
+        </Link>       
         </div>
 
        ))}

@@ -1,4 +1,4 @@
-
+import { Suspense } from 'react'
 import './globals.css'
 import Header from './header'
 // import FormPost from './components/Form'
@@ -22,8 +22,9 @@ export default function RootLayout({
       <body >
         <Provider>
             <Header />
-            {/* <FormPost /> */}
-            {children}            
+            <Suspense fallback={<p>Loading feed...</p>}>
+               {children}  
+           </Suspense>               
         </Provider>
 
       </body>
