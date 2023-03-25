@@ -48,10 +48,10 @@ export async function GET(request: Request, { params }: any) {
             id: params.id,
         },
         data: {
-            title: body.title || undefined, 
-            content: body.content || undefined,
-            image: body.image || undefined,
-            published: body.published || undefined,  // if body.vlue is falsy then return undefined, otherwise return it's value
+            title: body.title , 
+            content: body.content ,
+            image: body.image ,
+            published: body.published ,  // if body.vlue is falsy then return undefined, otherwise return it's value
         }
       });
       

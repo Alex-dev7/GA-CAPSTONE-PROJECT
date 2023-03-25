@@ -15,121 +15,60 @@ const Header: React.FC = () => {
   const image = session?.user?.image;
 
   let left = (
-    <div className="left">
-      <Link legacyBehavior href="/">
-        <a className="bold" data-active={isActive("/")}>
+    <div className="left ">
+      <Link  href="/" className="  py-2 px-3 hover:border-2" data-active={isActive("/")}>
           Feed
-        </a>
       </Link>
-      <style jsx>{`
-        .bold {
-          font-weight: bold;
-        }
-
-        a {
-          text-decoration: none;
-          color: var(--geist-foreground);
-          display: inline-block;
-        }
-
-        .left a[data-active="true"] {
-          color: gray;
-        }
-
-        a + a {
-          margin-left: 1rem;
-        }
-      `}</style>
     </div>
-  );
+  )
 
-  let right = null;
 
+
+  let right = null
+// ----------------------------------------------------------------
   if (status === "loading") {
     left = (
       <div className="left">
-        <Link legacyBehavior href="/">
-          <a className="bold" data-active={isActive("/")}>
+        <Link  href="/" data-active={isActive("/")}>
             Feed
-          </a>
         </Link>
-        <style jsx>{`
-          .bold {
-            font-weight: bold;
-          }
-
-          a {
-            text-decoration: none;
-            color: var(--geist-foreground);
-            display: inline-block;
-          }
-
-          .left a[data-active="true"] {
-            color: gray;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-        `}</style>
       </div>
-    );
+    )
+
+
     right = (
       <div className="right">
         <p>Validating session ...</p>
-        <style jsx>{`
-          .right {
-            margin-left: auto;
-          }
-        `}</style>
       </div>
     );
   }
 
+
+//----------------------------------------------------------------
+// if session does not exist
   if (!session) {
     right = (
       <div className="right">
-        <Link legacyBehavior href="/api/auth/signin">
-          <a data-active={isActive("/signup")}>Log in</a>
+        <Link legacyBehavior href="/api/auth/signin" data-active={isActive("/signup")}>
+          Log in
         </Link>
-        <style jsx>{`
-          a {
-            text-decoration: none;
-            color: var(--geist-foreground);
-            display: inline-block;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-
-          .right {
-            margin-left: auto;
-          }
-
-          .right a {
-            border: 1px solid var(--geist-foreground);
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-          }
-        `}</style>
       </div>
     );
   }
 
+//----------------------------------------------------------------
+// if session exists
   if (session) {
     left = (
-      <div className="left">
-        <Link legacyBehavior href="/">
-          <a className="bold" data-active={isActive("/")}>
+      <div className="left space-x-4">
+        <Link className="bold"  href="/" data-active={isActive("/")}>
             Feed
-          </a>
         </Link>
 
-        <Link legacyBehavior href="/drafts">
-          <a data-active={isActive(`/drafts?${session?.user?.email}`)}>My drafts</a>
+        <Link  href="/drafts" data-active={isActive(`/drafts`)}>
+          My drafts
         </Link>
-        <style jsx>{`
+        {/* <style jsx>{`
           .bold {
             font-weight: bold;
           }
@@ -143,76 +82,31 @@ const Header: React.FC = () => {
           .left a[data-active="true"] {
             color: gray;
           }
-
-          a + a {
-            margin-left: 1rem;
-          }
-        `}</style>
+        `}</style> */}
       </div>
     )
 
     right = (
-      <div className="right">
-        <img src={image as string} className="w-12  rounded-full" />
-        <p>{session.user?.name}</p>
+      <div className="right flex justify-center align-middle gap-6">
+        <img  src={image as string} className="w-12  rounded-full" />
+        <p className=" h-fit align-middle self-center font-normal text-sm -translate-x-4">{session.user?.name}</p>
 
-        <Link legacyBehavior href="/create">
-          <button>
-            <a>New post</a>
-          </button>
+        <Link href="/create" className=" self-center">
+
+            New post
+       
         </Link>
-        <button onClick={() => signOut()}>
-          <a>Log out</a>
+        <button className=" h-fit self-center " onClick={() => signOut()}>
+          Log out
         </button>
-        <style jsx>{`
-          a {
-            text-decoration: none;
-            color: var(--geist-foreground);
-            display: inline-block;
-          }
-
-          p {
-            display: inline-block;
-            font-size: 13px;
-            padding-right: 1rem;
-          }
-
-          a + a {
-            margin-left: 1rem;
-          }
-
-          .right {
-            margin-left: auto;
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-          }
-
-          .right a {
-            border: 1px solid var(--geist-foreground);
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-          }
-
-          button {
-            border: none;
-          }
-        `}</style>
       </div>
     );
   }
 
   return (
-    <nav>
-      {left}
+    <nav  className="p-8 border-b-2 flex items-center justify-between space-x-2  ">
+      {left }
       {right}
-      <style jsx>{`
-        nav {
-          display: flex;
-          padding: 2rem;
-          align-items: center;
-        }
-      `}</style>
     </nav>
   );
 };

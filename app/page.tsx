@@ -1,8 +1,9 @@
 import Link from "next/link"
+import Image from "next/image";
 
 
 async function getData() {
-    const res = await fetch(`${process.env.BASE_URL}/api/post`, { cache: "no-cache" });
+    const res = await fetch(`${process.env.BASE_URL}/api/post`, {cache: "no-cache"});
 
     const response  = await res.json();
     // console.log(response)
@@ -22,20 +23,36 @@ export default async function Home() {
   return (
     <>
 
-    <main className="py-8 px-48">
+    <main className="">
+      <div >
+        <h1 className="w-fit translate-y-3 mx-auto bg-white text-2xl font-semibold text-gray-600">Feed</h1>
+        <hr className="border-grey-600 mb-10 z-10"/>
+      </div>
 
-    <h1>---- HOME PAGE ----</h1>
-     
-      {/* @ts-expect-error Async Server Component */}
-       {posts?.map((post )=> (
-        <div  key={post.id} className="m-4 border-2 flex p-5 hover:text-white hover:bg-slate-600  transition-all">
-            <img src={post.image} className="w-64" />
-        <Link  href={{pathname: `/post/${post.id}`}} className="text-lg p-6">
-          {post.title}
-        </Link>       
+    
+      <div className="grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24">
+       {posts?.map((post: Post )=> (
+        <div key={post.id} className="group">
+
+          <div  className="flex flex-col relative w-full drop-shadow-xl group-hover:scale-105 transition-transform duration-200 ease-out">
+              <img src={post.image} alt={post.title}  
+              className="w-full object-cover lg:object-center" 
+              />
+           <div className="absolute  text-white bottom-0 w-full bg-opacity-50 bg-black rounded drop-shadow-lg p-5 flex  justify-between">
+             <p className="line-clamp-2 " >{post.content}</p>
+          </div>     
+          </div>
+          <div className="mt-5">
+            <Link  href={{pathname: `/post/${post.id}`}} className="text-lg p-6 underline font-bold">
+                {post.title}
+             </Link> 
+          </div>
         </div>
 
-       ))}
+
+       ))}        
+      </div>
+
     </main>    
     
     </>
@@ -43,3 +60,4 @@ export default async function Home() {
   )
 }
 
+//{/* @ts-expect-error Async Server Component */
