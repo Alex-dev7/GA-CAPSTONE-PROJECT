@@ -2,7 +2,7 @@
 import prisma from "@/lib/prisma"
 import Link from "next/link"
 import DeletePost from "../components/delete"
-import Publish from "./publish"
+import Publish from "../components/publish"
 import NextAuth, { getServerSession} from "next-auth/next"
 import { options } from "@/pages/api/auth/[...nextauth]"
 
@@ -40,11 +40,11 @@ export default async function MyDrafts(){
     return (
         <div>
             <div className="">
-                <h1 className="w-fit translate-y-3 mx-auto bg-white text-2xl font-semibold text-gray-600">Drafts</h1>
+                <h1 className="w-fit translate-y-3 mx-auto bg-white px-4 text-2xl font-semibold text-gray-600">Drafts</h1>
                 <hr className="border-grey-600 mb-10 z-10"/>
             </div>  
 
-            { data?.map((post )=> (
+            { session ? data?.map((post )=> (
                    <div  key={post.id} 
                    className="
                    m-4 
@@ -74,7 +74,7 @@ export default async function MyDrafts(){
                         <Publish id={post?.id} />                    
                    </div>
                    </div>
-                 )) }
+                 )) : <div className="w-fit mx-auto">Log in to view your drafts.</div> }
 
         </div>
     )

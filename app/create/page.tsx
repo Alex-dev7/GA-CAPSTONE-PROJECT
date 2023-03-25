@@ -38,32 +38,83 @@ export default function CreatePost() {
   
 
   return (
-    <form  onSubmit={submitPost}>
-      <input
-      className="border"
-        onChange={(e) => setTitle(e.currentTarget.value)}
-        type="text"
-        name="title"
-        value={title}
-        placeholder="post title"
-      />
-      <input  
-      className="border"
-      onChange={(e) => setContent(e.currentTarget.value)}
-       type="text"
-       name="content"
-       value={content} 
-       placeholder="your content"
-       />
-       <input 
-       className="border"
-       onChange={(e) => setImage(e.currentTarget.value)}
-       type="text" 
-       name="image" 
-       value={image}
-       placeholder="image url" 
-       />
-      <button className="border" type="submit">create</button>
-    </form>
+    <>
+         <div >
+        <h1 className="w-fit translate-y-3 mx-auto bg-white text-2xl font-semibold text-gray-600 px-4">
+            What's cooking?
+          </h1>
+        <hr className="border-grey-600 mb-10 z-10"/>
+      </div>
+    <div className="w-10/12 md:w-8/12 mx-auto p-8 border border-black shadow-lg">
+      <form className="flex flex-col gap-y-2"  onSubmit={submitPost}>
+      <label htmlFor="title">Title</label>
+        <input
+        id="title"
+        className="border"
+          onChange={(e) => setTitle(e.currentTarget.value)}
+          type="text"
+          name="title"
+          value={title}
+          placeholder="post title"
+          required
+        />
+        <label htmlFor="image">Image</label>
+        <input 
+        id="image"
+        className="border"
+        onChange={(e) => setImage(e.currentTarget.value)}
+        type="text" 
+        name="image" 
+        value={image}
+        placeholder="image url" 
+        />        
+        <label htmlFor="content">Content</label>
+        <textarea  
+        id="content"
+        className="border"
+        onChange={(e) => setContent(e.currentTarget.value)}
+        name="content"
+        value={content} 
+        placeholder="your content"
+        required
+        rows={10} cols={50}
+        />
+
+        <button className="border w-40 py-1 text-gray-400   hover:border-black hover:text-black shadow-md active:shadow-none" type="submit">create</button>
+      </form>  
+      <style jsx>{`
+      label {
+        letter-spacing: 1px;
+        transform: translateY(10px);
+        margin: 0 10px;
+        background-color: transparent;
+        width: fit-content;
+        font-size:16px;
+        padding: 0 5px;
+      }
+      input, textarea {
+        background-color: rgba(128, 128, 128, 0.05);
+        min-height: 50px;
+        font-size: 15px;
+        font-family: monospace;
+        border-radius:5px;
+        padding: 0 20px;
+        color: black;
+      }
+      textarea {
+        padding: 20px 20px;
+      }
+      input:focus, textarea:focus{
+        outline: none;
+        border: .5px solid orange;
+      border-bottom: 3px solid orange; 
+      
+       
+    }
+      `}
+      </style>    
+    </div>
+    </>
   );
 }
+  // border: 1px solid #454546;

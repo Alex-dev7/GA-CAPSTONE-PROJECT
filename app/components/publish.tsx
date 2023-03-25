@@ -21,7 +21,7 @@ export default function Publish({id}: any){
     
     return (
       <form onSubmit={handleSubmit} >
-          <button type="submit" className='h-9 w-40 bg-green-500'>
+          <button type="submit" className='h-9 w-40 border hover:border-green-300  hover:border-2 hover:text-green-300 active:text-white'>
               publish
           </button>        
       </form>

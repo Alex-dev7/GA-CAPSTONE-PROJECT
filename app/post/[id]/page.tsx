@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server"
-import UpdateForm from "./UpdateForm"
+import UpdateForm from "../../components/UpdateForm"
 import { getServerSession } from "next-auth"
 import { options } from "@/pages/api/auth/[...nextauth]"
 import DeletePost from "@/app/components/delete"
@@ -27,11 +27,11 @@ export default async function Post({params}: any){
     // console.log({session})
 
     return ( <>
-        <div>
-            <img src={post?.image} alt={post?.title} />
-            <h1>{post?.title}</h1>
-            <p>{post?.content}</p>
-            <p>by {post?.author?.name}</p>
+        <div className="w-10/12 mx-auto flex flex-col gap-y-4 my-20">
+            <img className="w-12/12 md:w-8/12 mx-auto" src={post?.image} alt={post?.title} />
+            <h3 className="font-semibold text-2xl ml-4">{post?.title}</h3>
+            <p className="text-justify">{post?.content}</p>
+            <i className="text-right">published by {post?.author?.name}</i>
         </div>   
        {postEmail === sessionEmail ? <UpdateForm id={post.id} title={post.title} content={post.content} image={post.image}/>  
         : "" }

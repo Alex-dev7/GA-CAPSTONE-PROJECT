@@ -11,6 +11,7 @@ export async function GET(request: NextRequest){
     const data = await prisma.post.findMany(
         {
         where: { published: true },
+        orderBy: { id: 'desc' },
         include: {
           author: {
             select: { name: true },
