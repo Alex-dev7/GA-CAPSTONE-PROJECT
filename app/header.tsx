@@ -66,7 +66,7 @@ const Header: React.FC = () => {
         </Link>
 
         <Link  href="/drafts" data-active={isActive(`/drafts`)}>
-          My drafts
+          Drafts
         </Link>
         {/* <style jsx>{`
           .bold {

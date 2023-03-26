@@ -32,13 +32,15 @@ export default async function Home() {
     
       <div className="grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24">
        {posts?.map((post: Post )=> (
-        <Link  href={{pathname: `/post/${post.id}`}}  key={post.id}>
-          <div  className="group">
-
+        
+          <div   key={post.id} className="group">
+          
             <div  className="flex flex-col relative w-full drop-shadow-xl group-hover:scale-105 transition-transform duration-200 ease-out">
+              <Link  href={{pathname: `/post/${post.id}`}} > 
                 <img src={post.image} alt={post.title}  
                 className="w-full max-h-[350px]  min-h-[350px] object-cover lg:object-center" 
                 />
+                </Link>  
             <div className="absolute  text-white bottom-0 w-full bg-opacity-50 bg-black group-hover:-translate-y-5 group-hover:bg-opacity-80 transition-all duration-200 ease-out rounded drop-shadow-lg p-5 flex  justify-between">
               <p className="line-clamp-2 " >{post.content}</p>
             </div>     
@@ -49,8 +51,9 @@ export default async function Home() {
               </Link> 
               <span className="absolute right-0 text-sm text-gray-400">by {post.author.name}</span>
             </div>
+         
           </div>        
-        </Link>
+        
 
 
 

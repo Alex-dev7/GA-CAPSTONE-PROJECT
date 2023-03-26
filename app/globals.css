@@ -2,8 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-h1{
-    color: #ec2f3fe0;
-    /* color: rgba(128, 128, 128, 0.125); */
-    
-}

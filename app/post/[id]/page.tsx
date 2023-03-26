@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server"
-import UpdateForm from "../../components/UpdateForm"
+import UpdateForm from "@/app/post/[id]/update"
 import { getServerSession } from "next-auth"
 import { options } from "@/pages/api/auth/[...nextauth]"
 import DeletePost from "@/app/components/delete"
@@ -32,10 +32,17 @@ export default async function Post({params}: any){
             <h3 className="font-semibold text-2xl ml-4">{post?.title}</h3>
             <p className="text-justify">{post?.content}</p>
             <i className="text-right">published by {post?.author?.name}</i>
-        </div>   
-       {postEmail === sessionEmail ? <UpdateForm id={post.id} title={post.title} content={post.content} image={post.image}/>  
+        </div>  
+        {/* {postEmail === sessionEmail ? <DeletePost className='w-8 h-9 border' id={post?.id}  /> : ""}  */}
+       {postEmail === sessionEmail ? <div>
+        <UpdateForm id={post.id} title={post.title} content={post.content} image={post.image}/>
+        <div className="w-full flex gap-x-4 align-middle justify-center mb-10">
+            <p className="self-center">do you want to delete this post?</p>
+            <DeletePost id={post?.id}  />
+        </div>
+        </div>  
         : "" }
-        {postEmail === sessionEmail ? <DeletePost className='w-8 h-9 border' id={post?.id}  /> : ""}
+       
     </>
 
     )
