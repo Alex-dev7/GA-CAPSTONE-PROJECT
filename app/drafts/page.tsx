@@ -57,8 +57,8 @@ export default async function MyDrafts(){
                    >
                    <div className="flex flex-col  max-h-64 ">
 
-                        {/* @ts-expect-error Async Server Component */}
-                        <img src={post.image} className="min-w-64 max-h-64  object-cover" />                    
+                     
+                        <img src={post.image as string} className="min-w-64 max-h-64  object-cover" />                    
                    </div>
 
  

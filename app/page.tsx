@@ -54,9 +54,6 @@ export default async function Home() {
          
           </div>        
         
-
-
-
        ))}        
       </div>
 
