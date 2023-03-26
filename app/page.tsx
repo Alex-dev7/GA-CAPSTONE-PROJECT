@@ -1,9 +1,9 @@
 import Link from "next/link"
-import Image from "next/image";
+
 
 
 async function getData() {
-    const res = await fetch(`/api/post`, {cache: "no-cache"});
+    const res = await fetch(`${process.env.BASE_URL}/api/post`, {cache: "no-cache"});
 
     const response  = await res.json();
     // console.log(response)

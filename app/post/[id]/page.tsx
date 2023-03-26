@@ -6,7 +6,7 @@ import DeletePost from "@/app/components/delete"
 
 async function getPost(id: number) {
     // console.log(id, "the id")
-    const res = await fetch(`/api/post/${id}`, {cache: "no-cache"})
+    const res = await fetch(`${process.env.BASE_URL}/api/post/${id}`, {cache: "no-cache"})
     const response  = await res.json();
     // console.log(response + "--------------------------------")
   

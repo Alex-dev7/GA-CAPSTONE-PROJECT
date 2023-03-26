@@ -9,7 +9,7 @@ export default function DeletePost({id}: any){
   const router = useRouter()
 
    async function deletePost(){
-        await fetch(`/api/post/${id}`, {
+        await fetch(`${process.env.BASE_URL}/api/post/${id}`, {
             method: "DELETE",
           })
 
