@@ -14,7 +14,7 @@ export default function UpdateForm({id, title, content, image}: any){
         const imageInput = form.elements.namedItem("image") as HTMLInputElement
         // console.log(titleInput.value, contentInput.value)
         
-    const res = await fetch(`/api/post/${id}`,{
+    const res = await fetch(`${process.env.BASE_URL}/api/post/${id}`,{
         method: 'PUT',
         body: JSON.stringify({title: titleInput.value, content: contentInput.value, image: imageInput.value})
     })
