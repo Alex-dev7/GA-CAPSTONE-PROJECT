@@ -20,11 +20,11 @@ export async function GET(request: NextRequest){
         }
         )
 
-        return  NextResponse.json(data)
+        return  NextResponse.json({data})
 
   }catch(error){
     if (error instanceof SyntaxError) {
-      console.error('Invalid JSON:', error.message);
+      console.error('Invalid JSON!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!:', error.message);
     } else {
       throw error;
     }
@@ -32,8 +32,6 @@ export async function GET(request: NextRequest){
 
     //   console.log(data);
 
-
-    
 }
 
 
