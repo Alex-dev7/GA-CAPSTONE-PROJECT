@@ -11,7 +11,7 @@ export default function Publish({id}: any){
    async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
     e.preventDefault()
 
-    const res = await fetch(`https://sytycc-blog.vercel.app/api/post/${id}`,{
+    const res = await fetch(`${process.env.BASE_URL}/api/post/${id}`,{
       method: 'PUT',
       body: JSON.stringify({published: true})
      })

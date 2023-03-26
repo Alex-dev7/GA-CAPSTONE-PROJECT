@@ -6,7 +6,7 @@ import prisma from "../../../../lib/prisma";
 
 export async function GET(request: Request, { params }: any) {
 
-try{
+// try{
     const data = await prisma.post.findUnique({
         where: {
             id: params.id,
@@ -20,13 +20,13 @@ try{
     //   console.log(data);
       
     return  NextResponse.json(data)
-  }catch(error){
-    if (error instanceof SyntaxError) {
-      console.error('Invalid JSON:', error.message);
-    } else {
-      throw error;
-    }
-  }
+  // }catch(error){
+  //   if (error instanceof SyntaxError) {
+  //     console.error('Invalid JSON:', error.message);
+  //   } else {
+  //     throw error;
+  //   }
+  // }
 }
 
 

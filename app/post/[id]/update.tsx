@@ -2,6 +2,8 @@
 import { useRouter } from "next/navigation"
 
 
+
+
 export default function UpdateForm({id, title, content, image}: any){
 
     const router = useRouter()
@@ -14,7 +16,7 @@ export default function UpdateForm({id, title, content, image}: any){
         const imageInput = form.elements.namedItem("image") as HTMLInputElement
         // console.log(titleInput.value, contentInput.value)
         
-    const res = await fetch(`https://sytycc-blog.vercel.app/api/post/${id}`,{
+    const res = await fetch(`/api/post/${id}`,{
         method: 'PUT',
         body: JSON.stringify({title: titleInput.value, content: contentInput.value, image: imageInput.value})
     })
@@ -31,7 +33,7 @@ export default function UpdateForm({id, title, content, image}: any){
             <label htmlFor="image">Image</label>
             <input id="image" type="text" name="image" defaultValue={image} />
             <label htmlFor="content">Content</label>
-            <textarea id="content"  name="content"rows={10} cols={50} defaultValue={content} />
+            <textarea id="content"  name="content" rows={10} cols={50} defaultValue={content} />
             <button className="border w-40 py-1 text-gray-400   hover:border-black hover:text-black shadow-md active:shadow-none" type="submit" >update</button> 
         </form>
         <style jsx>{`

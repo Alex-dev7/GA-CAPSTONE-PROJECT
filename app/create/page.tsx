@@ -23,7 +23,7 @@ export default function CreatePost() {
     const contentInput = form.elements.namedItem("content") as HTMLInputElement
     const imageInput = form.elements.namedItem("image") as HTMLInputElement
     
-    const res = await fetch(`https://sytycc-blog.vercel.app/api/post`, { 
+    const res = await fetch(`${process.env.BASE_URL}/api/post`, { 
       method: "POST",
       body: JSON.stringify({title: titleInput?.value, content: contentInput?.value, image: imageInput?.value, email: email})
     });
@@ -71,9 +71,9 @@ export default function CreatePost() {
         <label htmlFor="content">Content</label>
         <textarea  
         id="content"
+        name="content"
         className="border"
         onChange={(e) => setContent(e.currentTarget.value)}
-        name="content"
         value={content} 
         placeholder="your content"
         required

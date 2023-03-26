@@ -1,5 +1,6 @@
-
+// "use client"
 import Link from "next/link"
+
 
 
 
@@ -8,19 +9,17 @@ async function getData() {
     const response  = await res.json();
     // console.log(response)
     if(!response.ok) new Error("failed to fetch/home page--------------------------------")
-    return {props: {response}}
+    return response
    
 }
-
 
 
 
 export default async function Home() {
 
 
- const data = await getData()
- const posts = data.props.response.data
-    // console.log(posts)
+const posts = await getData()
+
     
   return (
     <>

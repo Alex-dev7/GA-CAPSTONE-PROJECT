@@ -2,7 +2,7 @@
 import './globals.css'
 import Header from './components/header'
 import Banner from './components/banner'
-import Provider from './components/provider'
+import Provider from './provider'
 
 
 

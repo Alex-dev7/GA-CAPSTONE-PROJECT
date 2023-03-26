@@ -20,7 +20,7 @@ export async function GET(request: NextRequest){
         }
         )
 
-        return  NextResponse.json({data})
+        return  NextResponse.json(data)
 
   }catch(error){
     if (error instanceof SyntaxError) {
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest){
 
     // const posts: postProps = request.body
     const body = await request.json();
-    // console.log(body.email)
+    console.log(body.email)
     // console.log(request);
     try{
     const data = await prisma.post.create({
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest){
           author: { connect: { email: body.email } },
         },
       });
-    //   console.log(data, "data!!!!!!!");
+      console.log(data, "data!!!!!!!");
 
     return  NextResponse.json(data)
   }catch(error){

@@ -3,9 +3,9 @@ import { getServerSession } from "next-auth"
 import { options } from "@/pages/api/auth/[...nextauth]"
 import DeletePost from "@/app/components/delete"
 
-async function getPost(id: number) {
+async function getPost(id: string) {
     // console.log(id, "the id")
-    const res = await fetch(`https://sytycc-blog.vercel.app/api/post/${id}`, {cache: "no-cache"})
+    const res = await fetch(`${process.env.BASE_URL}/api/post/${id}`)
     const response  = await res.json();
     // console.log(response + "--------------------------------")
   
@@ -15,10 +15,10 @@ async function getPost(id: number) {
 
 
 export default async function Post({params}: any){
-
+    console.log(params.id);
     const session = await getServerSession(options)
-    const post = await  getPost(params?.id)
-
+    const post = await getPost(params?.id)
+    console.log(post)
     const postEmail = post?.author?.email 
     const sessionEmail = session?.user?.email
 
@@ -32,9 +32,8 @@ export default async function Post({params}: any){
             <p className="text-justify">{post?.content}</p>
             <i className="text-right">published by {post?.author?.name}</i>
         </div>  
-        {/* {postEmail === sessionEmail ? <DeletePost className='w-8 h-9 border' id={post?.id}  /> : ""}  */}
        {postEmail === sessionEmail ? <div>
-        <UpdateForm id={post.id} title={post.title} content={post.content} image={post.image}/>
+        <UpdateForm id={post?.id} title={post?.title} content={post?.content} image={post?.image}/>
         <div className="w-full flex gap-x-4 align-middle justify-center mb-10">
             <p className="self-center">do you want to delete this post?</p>
             <DeletePost id={post?.id}  />
