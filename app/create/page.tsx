@@ -117,4 +117,3 @@ export default function CreatePost() {
     </>
   );
 }
-  // border: 1px solid #454546;

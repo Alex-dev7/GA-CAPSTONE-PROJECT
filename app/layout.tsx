@@ -1,9 +1,9 @@
-// import { Suspense } from 'react'
+
 import './globals.css'
 import Header from './components/header'
 import Banner from './components/banner'
 import Provider from './components/provider'
-// import Footer from './footer'
+
 
 
 export const metadata = {
@@ -24,11 +24,8 @@ export default function RootLayout({
         <Provider>
             <Header />
             <Banner />
-            {/* <Suspense fallback={<p>Loading feed...</p>}> */}
                {children}  
-           {/* </Suspense>                */}
         </Provider>
-        {/* <Footer/> */}
       </body>
     </html>
   )

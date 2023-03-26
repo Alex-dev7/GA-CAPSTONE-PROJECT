@@ -1,4 +1,3 @@
-import { NextRequest } from "next/server"
 import UpdateForm from "@/app/post/[id]/update"
 import { getServerSession } from "next-auth"
 import { options } from "@/pages/api/auth/[...nextauth]"

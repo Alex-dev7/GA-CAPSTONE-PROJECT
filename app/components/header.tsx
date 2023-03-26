@@ -69,15 +69,6 @@ const Header: React.FC = () => {
           Drafts
         </Link>
         {/* <style jsx>{`
-          .bold {
-            font-weight: bold;
-          }
-
-          a {
-            text-decoration: none;
-            color: var(--geist-foreground);
-            display: inline-block;
-          }
 
           .left a[data-active="true"] {
             color: gray;

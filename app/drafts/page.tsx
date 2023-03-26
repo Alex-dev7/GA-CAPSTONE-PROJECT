@@ -1,9 +1,9 @@
-// "use client"
+
 import prisma from "@/lib/prisma"
 import Link from "next/link"
 import DeletePost from "../components/delete"
 import Publish from "../components/publish"
-import NextAuth, { getServerSession} from "next-auth/next"
+import { getServerSession} from "next-auth/next"
 import { options } from "@/pages/api/auth/[...nextauth]"
 
 
