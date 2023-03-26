@@ -4,7 +4,7 @@ import Link from "next/link"
 
 
 async function getData() {
-    const res = await fetch(`${process.env.BASE_URL}/api/post`);
+    const res = await fetch(`https://sytycc-blog.vercel.app/api/post`);
     const response  = await res.json();
     // console.log(response)
     if(!response.ok) new Error("failed to fetch/home page--------------------------------")
