@@ -7,22 +7,33 @@ import prisma from "../../../lib/prisma";
 // GET ALL
 
 export async function GET(request: NextRequest){
-
-    const data = await prisma.post.findMany(
-        {
-        where: { published: true },
-        orderBy: { id: 'desc' },
-        include: {
-          author: {
-            select: { name: true },
+  try{
+      const data = await prisma.post.findMany(
+          {
+          where: { published: true },
+          orderBy: { id: 'desc' },
+          include: {
+            author: {
+              select: { name: true },
+            },
           },
-        },
-      }
-      )
+        }
+        )
+
+        return  NextResponse.json(data)
+
+  }catch(error){
+    if (error instanceof SyntaxError) {
+      console.error('Invalid JSON:', error.message);
+    } else {
+      throw error;
+    }
+  }
+
     //   console.log(data);
 
 
-    return  NextResponse.json(data)
+    
 }
 
 
@@ -35,6 +46,7 @@ export async function POST(request: NextRequest){
     const body = await request.json();
     // console.log(body.email)
     // console.log(request);
+    try{
     const data = await prisma.post.create({
         data: {
           title: body.title,
@@ -46,4 +58,11 @@ export async function POST(request: NextRequest){
     //   console.log(data, "data!!!!!!!");
 
     return  NextResponse.json(data)
+  }catch(error){
+    if (error instanceof SyntaxError) {
+      console.error('Invalid JSON:', error.message);
+    } else {
+      throw error;
+    }
+  }
 }

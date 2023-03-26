@@ -1,8 +1,8 @@
 // import { Suspense } from 'react'
 import './globals.css'
-import Header from './header'
-import Banner from './banner'
-import Provider from './provider'
+import Header from './components/header'
+import Banner from './components/banner'
+import Provider from './components/provider'
 // import Footer from './footer'
 
 

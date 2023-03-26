@@ -23,7 +23,7 @@ export default function CreatePost() {
     const contentInput = form.elements.namedItem("content") as HTMLInputElement
     const imageInput = form.elements.namedItem("image") as HTMLInputElement
     
-    const res = await fetch(`${process.env.BASE_URL}/api/post`, { 
+    const res = await fetch(`/api/post`, { 
       method: "POST",
       body: JSON.stringify({title: titleInput?.value, content: contentInput?.value, image: imageInput?.value, email: email})
     });
