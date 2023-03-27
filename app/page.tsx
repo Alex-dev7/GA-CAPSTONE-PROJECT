@@ -4,21 +4,21 @@ import Link from "next/link"
 
 
 
-async function getData() {
-    const res = await fetch(`https://sytycc-blog.vercel.app/api/post`);
-    const response  = await res.json();
-    // console.log(response)
-    if(!response.ok) new Error("failed to fetch/home page--------------------------------")
-    return response
+// async function getData() {
+//     const res = await fetch(`https://sytycc-blog.vercel.app/api/post`, {cache: "no-cache"});
+//     const response  = await res.json();
+//     // console.log(response)
+//     if(!response.ok) new Error("failed to fetch/home page--------------------------------")
+//     return response
    
-}
+// }
 
 
 
 export default async function Home() {
 
 
-const posts = await getData()
+// const posts = await getData()
 
     
   return (
@@ -32,7 +32,7 @@ const posts = await getData()
 
     
       <div className="grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24">
-       {posts ? posts.map((post: Post )=> (
+       {/* {posts ? posts.map((post: Post )=> (
         
           <div   key={post?.id} className="group">
           
@@ -55,7 +55,7 @@ const posts = await getData()
          
           </div>        
         
-       )) : null}        
+       )) : null}         */}
       </div>
 
     </main>    
