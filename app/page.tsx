@@ -4,21 +4,21 @@ import Link from "next/link"
 
 
 
-// async function getData() {
-//     const res = await fetch(`https://sytycc-blog.vercel.app/api/post`, {cache: "no-cache"});
-//     const response  = await res.json();
-//     // console.log(response)
-//     if(!response.ok) new Error("failed to fetch/home page--------------------------------")
-//     return response
+async function getData() {
+    const res = await fetch(`https://sytycc-blog.vercel.app/api/post`, {cache: "no-cache"});
+    const response  = await res.json();
+    // console.log(response)
+    // if(!response.ok) new Error("failed to fetch/home page--------------------------------")
+    return response
    
-// }
+}
 
 
 
 export default async function Home() {
 
 
-// const posts = await getData()
+const posts = await getData()
 
     
   return (
