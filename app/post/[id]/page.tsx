@@ -5,7 +5,7 @@ import DeletePost from "@/app/components/delete"
 
 async function getPost(id: string) {
     // console.log(id, "the id")
-    const res = await fetch(`https://sytycc-blog.vercel.app/api/post/${id}`)
+    const res = await fetch(`https://sytycc-blog.vercel.app/api/post/${id}`, {cache: "no-cache"})
     const response  = await res.json();
     // console.log(response + "--------------------------------")
   

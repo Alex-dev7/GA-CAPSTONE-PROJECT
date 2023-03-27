@@ -2,6 +2,38 @@ import { NextResponse } from "next/server"
 import prisma from "../../../../lib/prisma";
 
 
+// UPDATE BY ID
+export async function PUT(request: Request, { params }: any) {
+
+  const body = await request.json();
+  console.log("just hiit the route PUT handler")
+
+  try {
+  const data = await prisma.post.update({
+      where: {
+          id: params.id,
+      },
+      data: {
+          title: body.title , 
+          content: body.content ,
+          image: body.image ,
+          published: body.published ,  // if body.vlue is falsy then return undefined, otherwise return it's value
+      }
+    });
+    
+
+  return  NextResponse.json(data)
+
+}catch(error){
+  if (error instanceof SyntaxError) {
+    console.error('Invalid JSON:', error.message);
+  } else {
+    throw error;
+  }
+}
+} 
+
+
 // SHOW BY ID
 
 export async function GET(request: Request, { params }: any) {
@@ -48,33 +80,4 @@ export async function GET(request: Request, { params }: any) {
 
 
 
-// UPDATE BY ID
-  export async function PUT(request: Request, { params }: any) {
 
-    const body = await request.json();
-    console.log("just hiit the route PUT handler")
-
-    try {
-    const data = await prisma.post.update({
-        where: {
-            id: params.id,
-        },
-        data: {
-            title: body.title , 
-            content: body.content ,
-            image: body.image ,
-            published: body.published ,  // if body.vlue is falsy then return undefined, otherwise return it's value
-        }
-      });
-      
-  
-    return  NextResponse.json(data)
-
-  }catch(error){
-    if (error instanceof SyntaxError) {
-      console.error('Invalid JSON:', error.message);
-    } else {
-      throw error;
-    }
-  }
-} 
