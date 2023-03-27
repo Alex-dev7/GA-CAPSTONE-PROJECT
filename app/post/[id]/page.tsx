@@ -1,6 +1,6 @@
 import UpdateForm from "@/app/post/[id]/update"
 import { getServerSession } from "next-auth"
-import { options } from "@/app/api/auth/[...nextauth]"
+import { options } from "@/pages/api/auth/[...nextauth]"
 import DeletePost from "@/app/components/delete"
 
 async function getPost(id: string) {

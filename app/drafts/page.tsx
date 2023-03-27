@@ -4,7 +4,7 @@ import Link from "next/link"
 import DeletePost from "../components/delete"
 import Publish from "../components/publish"
 import { getServerSession} from "next-auth/next"
-import { options } from "@/app/api/auth/[...nextauth]"
+import { options } from "@/pages/api/auth/[...nextauth]"
 
 
 async function getData(email: any) {
