@@ -8,3 +8,11 @@ type Post = {
     authorId: string,
 }
 
+type User = {
+    id: string,
+    name: string,
+    email: string,
+    image: string,   
+}
+
+
