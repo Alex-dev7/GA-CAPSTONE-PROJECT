@@ -5,12 +5,12 @@ declare global {
         interface Global {}
     }
 }
-// add prosma to the NodeJS global type
+
 interface CustomNodeJsGlobal extends NodeJS.Global {
     prisma: PrismaClient
 }
 
-// prevent multiple instances of Prisma Client in development
+// prevents multiple instances of Prisma Client in development
 declare const global: CustomNodeJsGlobal
 
 const prisma = global.prisma || new PrismaClient()
