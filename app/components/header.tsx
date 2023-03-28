@@ -89,7 +89,7 @@ const Header: React.FC = () => {
   }
 
   return (
-    <nav  className="p-8 border-b-2 flex items-center justify-between space-x-2  ">
+    <nav  className="p-8 border-b-2 flex flex-col-reverse md:flex-row items-center justify-between space-x-2  ">
       {left }
       {right}
     </nav>
