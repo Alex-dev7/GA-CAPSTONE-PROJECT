@@ -30,8 +30,6 @@ export async function GET(request: NextRequest){
     }
   }
 
-    //   console.log(data);
-
 }
 
 
@@ -40,10 +38,10 @@ export async function GET(request: NextRequest){
 
 export async function POST(request: NextRequest){
 
-    // const posts: postProps = request.body
+
     const body = await request.json();
-    console.log(body.email)
-    // console.log(request);
+    // console.log(body.email)
+
     try{
     const data = await prisma.post.create({
         data: {

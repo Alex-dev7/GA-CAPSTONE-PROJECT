@@ -8,10 +8,9 @@ export default function CreatePost() {
   const [content, setContent] = useState("")
   const [image, setImage] = useState("")
   const router = useRouter()
-  // console.log(title)
-    const { data: session } = useSession();
-    const email = session?.user?.email
-    // console.log(email)
+
+  const { data: session } = useSession();
+  const email = session?.user?.email
 
   // Create a submit post
   async function submitPost(e: React.FormEvent<HTMLFormElement>) {

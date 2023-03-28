@@ -8,15 +8,15 @@ import { signOut, useSession } from "next-auth/react"
 const Header: React.FC = () => {
   const router = useRouter();
   const currentPathname = usePathname();
-  const isActive: (pathname: string) => boolean = (pathname) =>
-    currentPathname === pathname;
+  const isActive: (pathname: string) => boolean = (pathname) => currentPathname === pathname;
 
   const { data: session, status } = useSession();
+  console.log(status)
   const image = session?.user?.image;
 
   let left = (
     <div className="left ">
-      <Link  href="/" className="  py-2 px-3 hover:border-2" data-active={isActive("/")}>
+      <Link  href="/" className=" py-2 px-3 hover:border-2 data-[active=true]:text-red-500" data-active={isActive("/")}>
           Feed
       </Link>
     </div>
@@ -29,7 +29,7 @@ const Header: React.FC = () => {
   if (status === "loading") {
     left = (
       <div className="left">
-        <Link  href="/" data-active={isActive("/")}>
+        <Link  href="/" data-active={isActive("/")} className=" data-[active=true]:text-red-500">
             Feed
         </Link>
       </div>
@@ -49,7 +49,7 @@ const Header: React.FC = () => {
   if (!session) {
     right = (
       <div className="right">
-        <Link legacyBehavior href="/api/auth/signin" data-active={isActive("/signup")}>
+        <Link  href="/api/auth/signin" data-active={isActive("/signup")} className=" data-[active=true]:text-green-500">
           Log in
         </Link>
       </div>
@@ -61,19 +61,13 @@ const Header: React.FC = () => {
   if (session) {
     left = (
       <div className="left space-x-4">
-        <Link className="bold"  href="/" data-active={isActive("/")}>
+        <Link className=" data-[active=true]:text-red-300"  href="/" data-active={isActive("/")}>
             Feed
         </Link>
 
-        <Link  href="/drafts" data-active={isActive(`/drafts`)}>
+        <Link className=" data-[active=true]:text-red-300 data-[active=true]:font-bold"  href="/drafts" data-active={isActive(`/drafts`)}>
           Drafts
         </Link>
-        {/* <style jsx>{`
-
-          .left a[data-active="true"] {
-            color: gray;
-          }
-        `}</style> */}
       </div>
     )
 
@@ -82,7 +76,7 @@ const Header: React.FC = () => {
         <img  src={image as string} className="w-12  rounded-full" />
         <p className=" h-fit align-middle self-center font-normal text-sm -translate-x-4">{session.user?.name}</p>
 
-        <Link href="/create" className=" self-center">
+        <Link href="/create" data-active={isActive("/create")} className=" self-center  data-[active=true]:text-green-500">
 
             New post
        

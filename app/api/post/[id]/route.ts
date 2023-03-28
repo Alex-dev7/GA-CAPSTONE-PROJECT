@@ -17,7 +17,7 @@ export async function PUT(request: Request, { params }: any) {
           title: body.title , 
           content: body.content ,
           image: body.image ,
-          published: body.published ,  // if body.vlue is falsy then return undefined, otherwise return it's value
+          published: body.published ,  
       }
     });
     
@@ -70,7 +70,7 @@ export async function GET(request: Request, { params }: any) {
             id: params.id,
         }
       });
-      console.log(data, "this data was deleted successfully");
+      // console.log(data, "this data was deleted successfully");
       
 
         return  NextResponse.json(data)
