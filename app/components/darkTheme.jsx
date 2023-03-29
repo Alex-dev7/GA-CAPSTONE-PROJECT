@@ -24,12 +24,15 @@ function DarkTheme() {
     // </select>       
     <div className='w-fit '>
         {currentTheme === 'light' ?
-        <button  onClick={e => setTheme('dark')} className="w-fit mx-auto">
-           <img src="/moon.svg" alt='moon icon' className='w-6'/> 
+        <button  onClick={e => setTheme('dark')} className="w-fit mx-auto flex rounded-lg pr-2 bg-neutral-200 transition-all ease-out duration-200">
+           <img src="/moon.svg" alt='moon icon' className='w-5 my-auto'/> 
+           <span className='ml-2 tracking-wider font-thin'>light</span>
         </button>
         :
-        <button  onClick={e => setTheme('light')}>
-             <img src="/sun.svg" alt='sun icon' className='w-6 '/>    
+        <button  onClick={e => setTheme('light')} className='w-fit mx-auto flex rounded-lg pl-2 bg-gray-900 transition-all ease-out duration-200'>
+            <span className='mr-2 tracking-wider font-thin'>dark</span> 
+             <img src="/sun.svg" alt='sun icon' className='w-5  my-auto'/>  
+              
         </button>}
     </div>   
   )

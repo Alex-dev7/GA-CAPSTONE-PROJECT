@@ -90,7 +90,7 @@ const Header: React.FC = () => {
   }
 
   return (
-    <nav  className="p-8 border-b-2 flex flex-col-reverse md:flex-row items-center justify-between align-middle space-x-2 relative ">
+    <nav  className="p-8 border-b-2 flex flex-col-reverse md:flex-row items-center justify-between align-middle space-x-2 static ">
       <div className="flex gap-8">
         {left}
         <DarkTheme/>
