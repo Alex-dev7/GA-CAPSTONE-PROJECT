@@ -25,26 +25,26 @@ export default function UpdateForm({id, title, content, image}: any){
 
     }
 
-    return (<div className="w-10/12 md:w-8/12 mx-auto p-8 border border-black shadow-lg my-8">
+    return (<div className="w-10/12 h-auto  md:w-8/12 mx-auto p-8  border border-black dark:border-gray-300 shadow-lg my-8">
         <p className="w-fit mx-auto font-semibold">update post</p>
         <form className="flex flex-col gap-y-2" onSubmit={handleSubmit}>
             <label htmlFor="title">Title</label>
-            <input id="title" type="text" name="title" defaultValue={title} />
+            <input className="dark:text-gray-300 dark:bg-slate-800" id="title" type="text" name="title" defaultValue={title} />
             <label htmlFor="image">Image</label>
-            <input id="image" type="text" name="image" defaultValue={image} />
+            <input  className="dark:text-gray-300 dark:bg-slate-800" id="image" type="text" name="image" defaultValue={image} />
             <label htmlFor="content">Content</label>
-            <textarea id="content"  name="content" rows={10} cols={50} defaultValue={content} />
-            <button className="border w-40 py-1 text-gray-400   hover:border-black hover:text-black shadow-md active:shadow-none" type="submit" >update</button> 
+            <textarea  className="dark:text-gray-300 dark:bg-slate-800" id="content"  name="content" rows={10} cols={50} defaultValue={content} />
+            <button className="border w-40 py-1 my-3 text-gray-400   hover:border-green-400 hover:text-green-600 shadow-md active:shadow-none" type="submit" >update</button> 
         </form>
         <style jsx>{`
       label {
         letter-spacing: 1px;
-        transform: translateY(10px);
+        transform: translateY(5px);
         margin: 0 10px;
         background-color: transparent;
         width: fit-content;
         font-size:16px;
-        padding: 0 5px;
+        padding: 5px 5px;
       }
       input, textarea {
         background-color: rgba(128, 128, 128, 0.05);

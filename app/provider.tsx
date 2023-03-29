@@ -1,12 +1,15 @@
 'use client'
-
-
+import { ThemeProvider } from 'next-themes'
 import { SessionProvider } from 'next-auth/react'
 
-// this could be wrong : {children: React.ReactNode} !!!!!
+
 const Provider = ({ children }: {children: React.ReactNode}) => {
 
-  return <SessionProvider >{children}</SessionProvider>
+  return( 
+    <ThemeProvider enableSystem={true} attribute="class">
+      <SessionProvider >{children}</SessionProvider>
+    </ThemeProvider>
+  )
 }
 
 export default Provider

@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { signOut, useSession } from "next-auth/react"
-
+import DarkTheme from "./darkTheme"
 
 const Header: React.FC = () => {
   const router = useRouter();
@@ -15,10 +15,11 @@ const Header: React.FC = () => {
   const image = session?.user?.image;
 
   let left = (
-    <div className="left ">
+    <div className="left">
       <Link  href="/" className=" py-2 px-3 hover:border-2 data-[active=true]:text-red-500" data-active={isActive("/")}>
           Feed
       </Link>
+      
     </div>
   )
 
@@ -60,7 +61,7 @@ const Header: React.FC = () => {
 // if session exists
   if (session) {
     left = (
-      <div className="left space-x-4">
+      <div className="left space-x-4 ">
         <Link className=" data-[active=true]:text-red-300"  href="/" data-active={isActive("/")}>
             Feed
         </Link>
@@ -89,8 +90,11 @@ const Header: React.FC = () => {
   }
 
   return (
-    <nav  className="p-8 border-b-2 flex flex-col-reverse md:flex-row items-center justify-between space-x-2  ">
-      {left }
+    <nav  className="p-8 border-b-2 flex flex-col-reverse md:flex-row items-center justify-between align-middle space-x-2 relative ">
+      <div className="flex gap-8">
+        {left}
+        <DarkTheme/>
+      </div>
       {right}
     </nav>
   );

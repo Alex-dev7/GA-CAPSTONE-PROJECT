@@ -27,7 +27,7 @@ dataArray.push([...posts])
 
     <main className="">
       <div >
-        <h1 className="w-fit translate-y-3 mx-auto px-4 bg-white text-2xl font-semibold text-gray-600">Feed</h1>
+        <h1 className="w-fit translate-y-3 mx-auto px-4 bg-white dark:bg-[#121212] dark:text-white text-2xl font-semibold text-gray-600">Feed</h1>
         <hr className="border-grey-600 mb-10 z-10"/>
       </div>
 
