@@ -3,6 +3,7 @@ import Link from "next/link"
 
 
 // https://sytycc-blog.vercel.app
+const revalidate = 60
 
 async function getData() {
     const res = await fetch(`${process.env.BASE_URL}/api/post`, {cache: "no-cache"});

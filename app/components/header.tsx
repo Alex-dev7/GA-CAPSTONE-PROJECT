@@ -50,7 +50,7 @@ const Header: React.FC = () => {
   if (!session) {
     right = (
       <div className="right">
-        <Link  href="/api/auth/signin" data-active={isActive("/signup")} className=" data-[active=true]:text-green-500">
+        <Link  href="/api/auth/signin" data-active={isActive("/signup")} className=" data-[active=true]:text-red-500">
           Log in
         </Link>
       </div>
@@ -61,7 +61,7 @@ const Header: React.FC = () => {
 // if session exists
   if (session) {
     left = (
-      <div className="left space-x-4 ">
+      <div className="left space-x-4 mt-4 md:mt-0">
         <Link className=" data-[active=true]:text-red-300"  href="/" data-active={isActive("/")}>
             Feed
         </Link>
@@ -73,9 +73,9 @@ const Header: React.FC = () => {
     )
 
     right = (
-      <div className="right flex justify-center align-middle gap-6">
-        <img  src={image as string} className="w-12  rounded-full" />
-        <p className=" h-fit align-middle self-center font-normal text-sm -translate-x-4">{session.user?.name}</p>
+      <div className="right w-fit flex flex-col md:flex-row justify-center align-middle gap-6">
+        <img  src={image as string} className="w-12 mx-auto  rounded-full" />
+        <p className=" h-fit align-middle self-center font-normal text-sm md:-translate-x-4">{session.user?.name}</p>
 
         <Link href="/create" data-active={isActive("/create")} className=" self-center  data-[active=true]:text-green-500">
 
@@ -90,10 +90,10 @@ const Header: React.FC = () => {
   }
 
   return (
-    <nav  className="p-8 border-b-2 flex flex-col-reverse md:flex-row items-center justify-between align-middle space-x-2 static ">
-      <div className="flex gap-8">
+    <nav  className="p-8 border-b-2 flex flex-col-reverse  md:flex-row items-center justify-between align-middle space-x-2 ">
+      <div className="flex flex-col-reverse md:flex-row gap-8">
         {left}
-        <DarkTheme/>
+        <DarkTheme />
       </div>
       {right}
     </nav>

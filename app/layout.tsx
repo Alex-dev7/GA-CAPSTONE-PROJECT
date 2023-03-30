@@ -3,6 +3,7 @@ import './globals.css'
 import Header from './components/header'
 import Banner from './components/banner'
 import Provider from './provider'
+import Footer from './components/footer'
 
 
 
@@ -25,6 +26,7 @@ export default function RootLayout({
             <Header />
             <Banner />
                {children}  
+            <Footer />
         </Provider>
       </body>
     </html>
