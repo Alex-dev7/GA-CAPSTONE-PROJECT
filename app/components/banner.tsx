@@ -1,7 +1,7 @@
 
 function Banner() {
   return ( 
-  <div className="flex flex-col mt-16 mb-2 md:mt-0 lg:flex-row lg:space-x-5 justify-between font-bold px-10 py-5 md:mb-10 relative">
+  <div id="top"  className="flex flex-col mt-16 mb-2 md:mt-0 lg:flex-row lg:space-x-5 justify-between font-bold px-10 py-5 md:mb-10 relative">
     <div>
         <h1 className="text-4xl md:text-7xl text-[#ec2f3fe0]">SyntaxSoup</h1>
         <h2 className="hidden mt-0 md:mt-0 md:block">welcome to a dev blog</h2>

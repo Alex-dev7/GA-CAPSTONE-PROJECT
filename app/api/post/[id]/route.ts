@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import prisma from "../../../../lib/prisma";
-
+import { getServerSession } from "next-auth";
 
 // UPDATE BY ID
 export async function PUT(request: Request, { params }: any) {

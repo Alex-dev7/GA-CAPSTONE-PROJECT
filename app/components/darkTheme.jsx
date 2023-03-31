@@ -2,8 +2,6 @@
 import { useState, useEffect } from 'react'
 import { useTheme } from "next-themes"
 
-// type systemTheme = any
-
 
 function DarkTheme() {
     const [mounted, setMounted] = useState(false)
@@ -18,13 +16,8 @@ function DarkTheme() {
       } 
       const currentTheme = theme === 'system' ? systemTheme : theme
      
-  return (
-    // <select value={theme} onChange={e => setTheme(e.target.value)}>
-    //     <option value="system">System</option>
-    //     <option value="dark">Dark</option>
-    //     <option value="light">Light</option>
-    // </select>       
-    <div className='w-fit fixed z-10 right-4 top-6 md:statik md:absolute md:top-11 md:left-40'>
+  return (      
+    <div className='w-fit fixed z-10 right-4 top-6 md:statik md:absolute md:top-11 md:left-40 text-black dark:text-white'>
         {currentTheme === 'light' ?
         <button  onClick={e => setTheme('dark')} className="w-fit mx-auto flex rounded-lg pr-2 bg-neutral-200 transition-all ease-out duration-200">
            <img src="/moon.svg" alt='moon icon' className='w-5 my-auto'/> 

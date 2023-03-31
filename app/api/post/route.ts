@@ -24,7 +24,7 @@ export async function GET(request: NextRequest){
 
   }catch(error){
     if (error instanceof SyntaxError) {
-      console.error('Invalid JSON!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!:', error.message);
+      console.error('Invalid JSON:', error.message);
     } else {
       throw error;
     }

@@ -20,13 +20,14 @@ const Header: React.FC = () => {
   // console.log(status)
   const image = session?.user?.image;
 
-  function handleClick(){
+  function handleClick() {
+    const nav: any = ref.current;
 
-    const nav: any = ref.current
-
-    !toggle ? nav.style.left = "-100%" : nav.style.left = "0"
+    !toggle && window.innerWidth < 768
+      ? (nav.style.left = "-100%")
+      : (nav.style.left = "0")
     setToggle(!toggle)
-    console.log(toggle, nav)
+    console.log(window.innerWidth)
   }
   
 
@@ -90,7 +91,7 @@ const Header: React.FC = () => {
 
     right = (
       <div className="right w-fit flex flex-col md:flex-row justify-center align-middle gap-6 ">
-        <img  src={image as string} className="w-12 absolute left-4 top-3 mx-auto rounded-full   md:relative md:top-0 md:left-0" />
+        <img  src={image as string} className="w-12 absolute left-[45%] top-5 mx-auto rounded-full   md:relative md:top-0 md:left-0" />
         <p className=" h-fit align-middle self-center font-normal text-sm md:-translate-x-4">{session.user?.name}</p>
 
         <Link href="/create" data-active={isActive("/create")} className=" self-center  data-[active=true]:text-green-400 hover:text-green-400">
@@ -107,16 +108,16 @@ const Header: React.FC = () => {
 
   return (
     <>
-    <nav  ref={ref} className="fixed text-white md:text-inherit  z-10 bg-zinc-800 -left-full transition-all duration-150  w-full   md:relative md:left-0 md:bg-transparent p-8 border-b-2 flex flex-col-reverse  md:flex-row items-center justify-between align-middle space-x-2 ">
+    <nav  ref={ref} onClick={handleClick} className="fixed text-white md:text-inherit  z-10 bg-zinc-800 opacity-98 -left-full  top-0 py-[30%] h-screen md:h-fit md:py-8  transition-all duration-150  w-full   md:relative md:left-0 md:bg-transparent p-8 border-b-2 flex flex-col-reverse  md:flex-row items-center justify-between align-middle space-x-2 ">
       {toggle ? 
-      <button onClick={handleClick} className="md:hidden">
+      <button onClick={handleClick} className="md:hidden z-20 ">
           <img className="fixed  transition-all duration-700  left-4 top-5" src="../h-close.svg"/>
           
       </button>
         
        :
-       <button onClick={handleClick} className="md:hidden">
-          <img className="fixed  left-4 top-5" src="../h-open.svg" />
+       <button onClick={handleClick} className="md:hidden z-20">
+          <img className="fixed left-4 top-5" src="../h-open.svg" />
        </button> 
        
        }

@@ -15,10 +15,9 @@ async function getPost(id: string) {
 
 
 export default async function Post({params}: any){
-    console.log(params.id);
+    // console.log(params.id)
     const session = await getServerSession(options)
     const post = await getPost(params?.id)
-    console.log(post)
     const postEmail = post?.author?.email 
     const sessionEmail = session?.user?.email
 
@@ -39,7 +38,7 @@ export default async function Post({params}: any){
         
         <UpdateForm id={post?.id} title={post?.title} content={post?.content} image={post?.image}/>
         <div className="w-full flex gap-x-4 align-middle justify-center mb-10">
-            <p className="self-center">do you want to delete this post?</p>
+            <p className="self-center"> delete post?</p>
             <DeletePost id={post?.id}  />
         </div>
         </div>  
