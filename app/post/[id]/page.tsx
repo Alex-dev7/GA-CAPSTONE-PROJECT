@@ -28,7 +28,7 @@ export default async function Post({params}: any){
         <div className="w-10/12 mx-auto mb-[20%] flex flex-col gap-y-4 my-20">
             <img className="w-12/12 md:w-8/12 mx-auto md:mb-10" src={post?.image} alt={post?.title} />
             <h3 className="font-semibold text-2xl ml-4 lg:w-9/12 lg:mx-auto">{post?.title}</h3>
-            <p className="text-justify lg:w-9/12 mx-auto">{post?.content}</p>
+            <p className=" lg:w-9/12 mx-auto">{post?.content}</p>
             <i className="text-right">published by {post?.author?.name}</i>
             {postEmail === sessionEmail ? 
             <button className=" w-40 mx-auto py-1 my-3 text-gray-400   hover:border-green-400 hover:text-green-600 "><a href="#update"> edit post &#8964; </a></button>
