@@ -23,7 +23,7 @@ const Header: React.FC = () => {
   function handleClick() {
     const nav: any = ref.current;
 
-    !toggle && window.innerWidth < 768
+    !toggle && window.innerWidth < 768 
       ? (nav.style.left = "-100%")
       : (nav.style.left = "0")
     setToggle(!toggle)
@@ -32,11 +32,14 @@ const Header: React.FC = () => {
   
 
   let left = (
-    <div className="left">
-      <Link  href="/" className=" py-2 px-3  data-[active=true]:text-red-500" data-active={isActive("/")}>
+    <div className="left ">
+      <Link onClick={handleClick} href="/" className=" py-2 px-3  data-[active=true]:text-red-500 relative" data-active={isActive("/")}>
           Feed
       </Link>
-      
+      <div className="absolute left-0 -top-2 w-full">
+         <DarkTheme />
+      </div>
+     
     </div>
   )
 
@@ -67,7 +70,7 @@ const Header: React.FC = () => {
   if (!session) {
     right = (
       <div className="right">
-        <Link  href="/api/auth/signin" data-active={isActive("/signup")} className=" data-[active=true]:text-red-500">
+        <Link  href="/api/auth/signin" data-active={isActive("/signup")} className=" data-[active=true]:text-red-500 hover:text-red-400">
           Log in
         </Link>
       </div>
@@ -79,18 +82,19 @@ const Header: React.FC = () => {
   if (session) {
     left = (
       <div className="left space-x-4 mt-4 md:mt-0">
-        <Link className=" data-[active=true]:text-red-400 hover:text-red-400"  href="/" data-active={isActive("/")}>
+        <Link onClick={handleClick}  className=" data-[active=true]:text-red-400 hover:text-red-400"  href="/" data-active={isActive("/")}>
             Feed
         </Link>
 
-        <Link className=" data-[active=true]:text-red-400 hover:text-red-400 "  href="/drafts" data-active={isActive(`/drafts`)}>
+        <Link onClick={handleClick}  className=" data-[active=true]:text-red-400 hover:text-red-400 "  href="/drafts" data-active={isActive(`/drafts`)}>
           Drafts
         </Link>
+        <DarkTheme />
       </div>
     )
 
     right = (
-      <div className="right w-fit flex flex-col md:flex-row justify-center align-middle gap-6 ">
+      <div onClick={handleClick} className="right w-fit flex flex-col md:flex-row justify-center align-middle gap-6 ">
         <img  src={image as string} className="w-12 absolute left-[45%] top-5 mx-auto rounded-full   md:relative md:top-0 md:left-0" />
         <p className=" h-fit align-middle self-center font-normal text-sm md:-translate-x-4">{session.user?.name}</p>
 
@@ -108,7 +112,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-    <nav  ref={ref} onClick={handleClick} className="fixed text-white md:text-inherit  z-10 bg-zinc-800 opacity-98 -left-full  top-0 py-[30%] h-screen md:h-fit md:py-8  transition-all duration-150  w-full   md:relative md:left-0 md:bg-transparent p-8 border-b-2 flex flex-col-reverse  md:flex-row items-center justify-between align-middle space-x-2 ">
+    <nav  ref={ref}  className="fixed text-white md:text-inherit  z-10 bg-zinc-800 opacity-98 -left-full  top-0 py-[30%] h-screen md:h-fit md:py-8  transition-all duration-150  w-full   md:relative md:left-0 md:bg-transparent p-8 border-b-2 flex flex-col-reverse  md:flex-row items-center justify-between align-middle space-x-2 ">
       {toggle ? 
       <button onClick={handleClick} className="md:hidden z-20 ">
           <img className="fixed  transition-all duration-700  left-4 top-5" src="../h-close.svg"/>
@@ -123,7 +127,7 @@ const Header: React.FC = () => {
        }
       <div className="flex flex-col-reverse md:flex-row gap-8" >
         {left}
-        <DarkTheme />
+        
       </div>
       {right}
     </nav>

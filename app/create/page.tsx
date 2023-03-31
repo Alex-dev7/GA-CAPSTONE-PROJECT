@@ -46,7 +46,7 @@ export default function CreatePost() {
           </h1>
         <hr className="border-grey-600 mb-10 z-10"/>
       </div>
-    <div className="w-10/12 md:w-8/12 mx-auto p-8 border mb-11 dark:border-gray-300 border-black shadow-lg">
+    <div className="w-10/12 md:w-8/12 mx-auto p-8 border mb-24 dark:border-gray-300 border-black shadow-lg">
       <form className="flex flex-col gap-y-2  "  onSubmit={submitPost}>
       <label htmlFor="title">Title</label>
         <input
