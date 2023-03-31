@@ -38,7 +38,7 @@ export default async function MyDrafts(){
     const data = await getData(session?.user?.email)
 
     return (
-        <div>
+        <div className="min-h-82 outline">
             <div className="">
                 <h1 className="w-fit translate-y-3 mx-auto bg-white px-4 text-2xl font-semibold text-gray-600 dark:bg-[#121212] dark:text-white">Drafts</h1>
                 <hr className="border-grey-600 mb-10 z-10"/>
