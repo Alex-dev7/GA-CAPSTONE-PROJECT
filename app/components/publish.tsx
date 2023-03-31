@@ -16,7 +16,7 @@ export default function Publish({id}: any){
       body: JSON.stringify({published: true})
      })
       // const response = await res.json()
-          router.push("/") 
+          router.refresh()
   }
     
     return (

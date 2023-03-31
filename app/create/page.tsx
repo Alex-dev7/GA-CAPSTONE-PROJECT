@@ -32,8 +32,9 @@ export default function CreatePost() {
     // console.log({response}, "ok")
 
     // this will refresh the page
-    router.refresh() 
     router.push('/drafts')
+    router.refresh()  
+
     if (!response.ok) console.log({response: response.message});
   }
 

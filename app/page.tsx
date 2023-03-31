@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 
-// const revalidate = 60
+const revalidate = 10
 
 async function getData() {
     const res = await fetch(`https://sytycc-blog.vercel.app/api/post`, {cache: "no-cache"});

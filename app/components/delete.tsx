@@ -16,8 +16,9 @@ export default function DeletePost({id}: any){
         await fetch(`/api/post/${id}`, {
             method: "DELETE",
           })
-          router.refresh()
-          router.push('/')   
+         
+          router.push('/')  
+          router.refresh() 
     }
     
     return (
