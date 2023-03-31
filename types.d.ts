@@ -4,7 +4,7 @@ type Post = {
     content: string,
     image: string,
     published: boolean,
-    author: any,
+    author: {name: string, email: string},
     authorId: string,
 }
 

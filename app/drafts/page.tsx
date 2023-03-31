@@ -1,10 +1,10 @@
 
-// import prisma from "@/lib/prisma"
+import prisma from "@/lib/prisma"
 import Link from "next/link"
 import DeletePost from "../components/delete"
 import Publish from "../components/publish"
-// import { getServerSession} from "next-auth/next"
-// import { options } from "@/pages/api/auth/[...nextauth]"
+import { getServerSession} from "next-auth/next"
+import { options } from "@/pages/api/auth/[...nextauth]"
 
 export const metadata = {
     title: 'Drafts | SyntaxSoup',
@@ -12,46 +12,35 @@ export const metadata = {
   }
   
 
-// async function getData(email: any) {
+async function getData(email: any) {
    
-//     try {
-//         const drafts = await prisma.post.findMany({
-//             where: {
-//             author: { email: email},
-//             published: false  ,
-//             },
-//             include: {
-//             author: {
-//                 select: { name: true },
-//             },
-//             },
-//         })
-//         return drafts
+    try {
+        const drafts = await prisma.post.findMany({
+            where: {
+            author: { email: email},
+            published: false  ,
+            },
+            include: {
+            author: {
+                select: { name: true },
+            },
+            },
+        })
+        return drafts
 
-//     }catch (err) {
-//         throw new Error("failed to fetch drafts")
-//     } 
-// }
-
-// const revalidate = 60
-
-async function getData() {
-    const res = await fetch(`https://sytycc-blog.vercel.app/api/draft`)
-    const response  = await res.json()
-    if(!response.ok) new Error("failed to fetch/drafts") 
-    return response
-   
+    }catch (err) {
+        throw new Error("failed to fetch drafts")
+    } 
 }
-
 
 
 
 export default async function MyDrafts(){
     
-    const posts = await getData()
+
   
-    // const session = await getServerSession(options)
-    // const data = await getData(session?.user?.email)
+    const session = await getServerSession(options)
+    const data = await getData(session?.user?.email)
 
     return (
         <div className="min-h-screen">
@@ -60,7 +49,7 @@ export default async function MyDrafts(){
                 <hr className="border-grey-600 mb-10 z-10"/>
             </div>  
      
-            { posts ? posts.map((post: Post )=> (
+            { session ? data?.map((post )=> (
                    <div  key={post.id} 
                    className="
                    m-4 
