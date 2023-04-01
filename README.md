@@ -1,18 +1,19 @@
-# S.Y.T.Y.C.C.Blog
+# SyntaxSoup
 
 - **Description:** 
-"So You Think You Can Code?" - a blog that chalanges you to be a better programmer, stay humble, and to keep on learning. 
+"SyntaxSoup" - a blog that chalanges you to be a better programmer, stay humble, and to keep on learning. 
 This blogging app is built with Next.js, Prisma, and PostgreSQL. The app allows users to create an account and publish blog posts. Users can view a list of all published posts, view individual posts, search for posts based on their title or tag, delete, and upgrade posts that he created.  This application is written in TypeScript, ensuring strong type safety throughout the codebase. Overall, the app is designed to provide a modern and user-friendly interface for creating and sharing content online.
 
 
 ## Technologies Used
-  * Next.js
-  * Next.js API routes
+  * Next.js 13
+  * Next.js 13/API routes
   * Prisma
   * PostgreSQL 
   * NextAuth.js 
   * TypeScript
   * Tailwind CSS
+  * next-themes
   * Figma
   * bit.io
   * Vercel
@@ -25,31 +26,27 @@ This blogging app is built with Next.js, Prisma, and PostgreSQL. The app allows 
 ```mermaid
 flowchart TD;
     subgraph "pages" 
-    HomePage --> AuthProvider
+    HomePage --> Layout
     AuthProvider --> Layout
     Layout --> Header
     Layout --> Main
     Layout --> Footer
     LoginPage --> AuthProvider
-    SignupPage --> AuthProvider
-    PostPage --> AuthProvider
+   
+    PostPage --> Layout
     end
     
     subgraph "components" 
     Header --> Logo
     Header --> Navigation
-    Header --> Search
     Navigation --> NavLink
     
-    Search --> SearchInput
-    Search --> SearchButton
     Main --> PostList
     PostList --> Post
     Post --> PostImage
     Post --> PostTitle
     Post --> PostAuthor
     Post --> PostContent
-    Post --> PostTags
     Footer --> SocialLinks
     end
 ```    
@@ -79,7 +76,7 @@ erDiagram
         string id
         string title
         string image
-        string[] tag
+     
         string content
         bool published
     }
