@@ -2,7 +2,7 @@
 CREATE TABLE "Post" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
-    "image" TEXT,
+    "image" TEXT NOT NULL,
     "tag" TEXT[],
     "content" TEXT,
     "published" BOOLEAN NOT NULL DEFAULT false,
@@ -27,3 +27,4 @@ CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- AddForeignKey
 ALTER TABLE "Post" ADD CONSTRAINT "Post_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "users"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
