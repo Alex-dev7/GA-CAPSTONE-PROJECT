@@ -1,25 +1,17 @@
 import Link from "next/link"
-import { env } from "process";
+import { getData } from "@/lib/utils";
 
 
 // const revalidate = 10
 
-async function getData() {
-    const res = await fetch(`${env.BASE_URL}/api/post`, {cache: "no-cache"});
-    const response  = await res.json();
-    // console.log(response)
 
-    if(!response.ok) new Error("failed to fetch/home") 
-    return response
-   
-}
 
 
 
 export default async function Home() {
 
 
-// const posts = await getData()
+const posts = await getData()
 
     
   return (
@@ -33,7 +25,7 @@ export default async function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24">
-          {/* {posts
+          {posts
             ? posts.map((post: Post) => (
                 <div key={post.id} className="group">
                   <div className="flex flex-col relative w-full drop-shadow-xl group-hover:scale-105 transition-transform duration-200 ease-out">
@@ -61,7 +53,7 @@ export default async function Home() {
                   </div>
                 </div>
               ))
-            : null} */}
+            : null}
         </div>
       </main>
     </>
