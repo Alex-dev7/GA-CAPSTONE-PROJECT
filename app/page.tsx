@@ -1,10 +1,11 @@
 import Link from "next/link"
+import { env } from "process";
 
 
 // const revalidate = 10
 
 async function getData() {
-    const res = await fetch(`https://sytycc-blog.vercel.app/api/post`, {cache: "no-cache"});
+    const res = await fetch(`${env.BASE_URL}/api/post`, {cache: "no-cache"});
     const response  = await res.json();
     // console.log(response)
 

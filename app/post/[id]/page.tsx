@@ -1,10 +1,11 @@
 import UpdateForm from "@/app/post/[id]/update"
 import { getServerSession } from "next-auth"
-import { options } from "@/pages/api/auth/[...nextauth]"
+import { options } from "@/app/api/auth/[...nextauth]"
 import DeletePost from "@/app/components/delete"
+import { env } from "process"
 
 async function getPost(id: string) {
-    const res = await fetch(`https://sytycc-blog.vercel.app/api/post/${id}`, {cache: "no-cache"})
+    const res = await fetch(`${env.BASE_URL}/api/post/${id}`, {cache: "no-cache"})
     const response  = await res.json()
     return response
    
