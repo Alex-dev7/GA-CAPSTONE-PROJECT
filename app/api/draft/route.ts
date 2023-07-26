@@ -13,11 +13,11 @@ export async function GET(request: NextRequest){
     try {
         const drafts = await prisma.post.findMany({
             where: {
-            author: { email: session?.user?.email},
+            user: { email: session?.user?.email},
             published: false  ,
             },
             include: {
-            author: {
+            user: {
                 select: { name: true },
             },
             },

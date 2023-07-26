@@ -17,11 +17,11 @@ async function getData(email: any) {
     try {
         const drafts = await prisma.post.findMany({
             where: {
-            author: { email: email},
+            user: { email: email},
             published: false  ,
             },
             include: {
-            author: {
+            user: {
                 select: { name: true },
             },
             },
@@ -41,6 +41,7 @@ export default async function MyDrafts(){
   
     const session = await getServerSession(options)
     const data = await getData(session?.user?.email)
+
 
     return (
         <div className="min-h-screen">

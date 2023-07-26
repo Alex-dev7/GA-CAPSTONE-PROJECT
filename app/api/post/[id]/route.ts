@@ -38,13 +38,13 @@ export async function PUT(request: Request, { params }: any) {
 
 export async function GET(request: Request, { params }: any) {
 
-// try{
+try{
     const data = await prisma.post.findUnique({
         where: {
             id: params.id,
         },
         include: {
-          author: {
+          user: {
             select: { name: true, email: true},
           },
         },
@@ -52,13 +52,13 @@ export async function GET(request: Request, { params }: any) {
     //   console.log(data);
       
     return  NextResponse.json(data)
-  // }catch(error){
-  //   if (error instanceof SyntaxError) {
-  //     console.error('Invalid JSON:', error.message);
-  //   } else {
-  //     throw error;
-  //   }
-  // }
+  }catch(error){
+    if (error instanceof SyntaxError) {
+      console.error('Invalid JSON:', error.message);
+    } else {
+      throw error;
+    }
+  }
 }
 
 

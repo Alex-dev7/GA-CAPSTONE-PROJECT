@@ -4,8 +4,8 @@ type Post = {
     content: string,
     image: string,
     published: boolean,
-    author: {name: string, email: string},
-    authorId: string,
+    user: {name: string, email: string},
+    authorid: string,
 }
 
 type User = {

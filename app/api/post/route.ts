@@ -13,7 +13,7 @@ export async function GET(request: NextRequest){
           where: { published: true },
           orderBy: { id: 'desc' },
           include: {
-            author: {
+            user: {
               select: { name: true },
             },
           },
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest){
           title: body.title,
           content: body.content,
           image: body.image,
-          author: { connect: { email: body.email } },
+          user: { connect: { email: body.email } }
         },
       });
       console.log(data, "data!!!!!!!");

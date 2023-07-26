@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 
-    // const revalidate = 10
+// const revalidate = 10
 
 async function getData() {
     const res = await fetch(`https://sytycc-blog.vercel.app/api/post`, {cache: "no-cache"});
@@ -55,7 +55,7 @@ const posts = await getData()
                       {post?.title}
                     </Link>
                     <span className="absolute right-0 text-sm text-gray-400">
-                      by {post.author.name}
+                      by {post.user?.name}
                     </span>
                   </div>
                 </div>

@@ -26,7 +26,7 @@ export default function CreatePost() {
     
     const res = await fetch(`/api/post`, { 
       method: "POST",
-      body: JSON.stringify({title: titleInput?.value, content: contentInput?.value, image: imageInput?.value, email: email})
+      body: JSON.stringify({title: titleInput?.value, content: contentInput?.value, image: imageInput?.value, email: email}) // change email
     });
     const response = await res.json();
     // console.log({response}, "ok")
@@ -35,6 +35,7 @@ export default function CreatePost() {
     router.push('/drafts')
     router.refresh()  
 
+    
     if (!response.ok) console.log({response: response.message});
   }
 
