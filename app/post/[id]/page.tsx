@@ -1,6 +1,6 @@
 import UpdateForm from "@/app/post/[id]/update"
 import { getServerSession } from "next-auth"
-import { options } from "@/app/api/auth/[...nextauth]"
+import { options } from "@/pages/api/auth/[...nextauth]"
 import DeletePost from "@/app/components/delete"
 import { env } from "process"
 
@@ -13,7 +13,7 @@ async function getPost(id: string) {
 
 
 export default async function Post({params}: any){
-    console.log(params.id)
+    // console.log(params.id)
     const session = await getServerSession(options)
     const post = await getPost(params?.id)
     const postEmail = post?.user?.email 

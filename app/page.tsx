@@ -19,7 +19,7 @@ async function getData() {
 export default async function Home() {
 
 
-const posts = await getData()
+// const posts = await getData()
 
     
   return (
@@ -33,7 +33,7 @@ const posts = await getData()
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24">
-          {posts
+          {/* {posts
             ? posts.map((post: Post) => (
                 <div key={post.id} className="group">
                   <div className="flex flex-col relative w-full drop-shadow-xl group-hover:scale-105 transition-transform duration-200 ease-out">
@@ -61,7 +61,7 @@ const posts = await getData()
                   </div>
                 </div>
               ))
-            : null}
+            : null} */}
         </div>
       </main>
     </>
